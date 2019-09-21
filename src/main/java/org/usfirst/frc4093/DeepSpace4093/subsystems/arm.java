@@ -209,13 +209,13 @@ public class arm extends Subsystem {
             Robot.Dash.displayData("Cargo side", false);
              // lift is above middle
              if (lastLiftSwitch > 2 || (lastLiftSwitch == 2 && liftDir == 1)) {
-                 armDown();
+                 armDown(); //lift is high enough that it is safe to put arm all the way down to stabilize
              } else {
-                 goToMiddle();
+                 goToMiddle(); //were not grabbing cargo so we just move arm to middle
              }
          } else{
-             holdPosition();
-             Robot.Dash.displayData("Cargo side", true);
+             holdPosition(); 
+             Robot.Dash.displayData("Cargo side", true); //indicate to driver that cargo mode is active
          }
     }
     @Override
