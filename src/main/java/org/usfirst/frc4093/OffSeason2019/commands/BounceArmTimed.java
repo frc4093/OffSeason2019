@@ -23,7 +23,7 @@ public class BounceArmTimed extends TimedCommand {
 
 
     public BounceArmTimed() {
-        this(0);
+        this(.25); //end() in a quarter second
     }
 
     public BounceArmTimed(double timeout) {
@@ -39,23 +39,27 @@ public class BounceArmTimed extends TimedCommand {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-
+        if (Robot.arm.getLimit() != 1)
+            end();
     }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
+        Robot.arm.armUp(); //move arm up
     }
 
 
     // Called once after isFinished returns true
     @Override
     protected void end() {
+        Robot.arm.holdPosition(); //hold
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     @Override
     protected void interrupted() {
+        end();
     }
 }

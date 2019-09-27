@@ -56,9 +56,6 @@ public class armDown extends Command {
     @Override
     protected void end() {
         Robot.arm.holdPosition();
-        // if (Robot.arm.getLimit() == 1){
-        //     //timed bounce here
-        // }
     }
 
     // Called when another command which requires one or more of the same
