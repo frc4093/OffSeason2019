@@ -53,6 +53,7 @@ public class Robot extends TimedRobot {
     public static Dash Dash;
     //my variables
     public int encoderReading;
+    private static boolean safetyOnBoolean = true;
     UsbCamera cam1,cam2,cam3;
     /**
      * This function is run when the robot is first started up and should be
@@ -146,4 +147,11 @@ public class Robot extends TimedRobot {
         Robot.Dash.voltage =  DriverStation.getInstance().getBatteryVoltage();
         Robot.Dash.time = DriverStation.getInstance().getMatchTime();
     }
+    public static boolean getSafety(){
+        return safetyOnBoolean;
+    }
+    public static void setsSafety(boolean newValue){
+        safetyOnBoolean = newValue;
+    }
+
 }
