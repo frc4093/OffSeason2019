@@ -94,7 +94,7 @@ public class lift extends Subsystem {
     }
     public void moveDown(double speed){
         if (getLimit() != 1){
-            move(speed*.25);
+            move(speed*1);//switch back to .25
             currentDir = -1;
         }else{
             hold();
