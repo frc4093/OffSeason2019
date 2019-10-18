@@ -44,10 +44,10 @@ public class xboxDrive extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        if (Robot.lift.encoder > 150000) {
-            Robot.drive.max = .5;
+        if (Robot.lift.encoder > 150000) {//lift above unsafe height
+            Robot.drive.max = .5;//half speed
         } else {
-           Robot.drive.max = 1;
+           Robot.drive.max = 1;//full speed
         }
         Robot.drive.driveAuto(Robot.oi.rightJoystick.getThrottle());
         

@@ -83,6 +83,17 @@ public class arm extends Subsystem {
         }
 
     }
+    public void armUp(double speed) {
+
+        if (getLimit() != topLimit && getLimit() != 3) {
+            armMotor.set(speed);
+            currentDir = 1;
+            // System.out.println("Moving up");
+        } else {
+            holdPosition();
+        }
+
+    }
 
     public void armDown() {
         if (Robot.oi.leftJoystick.getRawButton(2)) {
@@ -91,6 +102,25 @@ public class arm extends Subsystem {
         } else {
             if (getLimit() != bottomLimit && getLimit() != 1) {
                 armMotor.set(-1);
+                currentDir = -1;
+                // System.out.println("Moving down");
+            } else {
+                holdPosition();
+            }
+        }
+
+    }
+    public void armDownNOLIMIT(){
+        armMotor.set(-1);
+        currentDir = -1;
+    }
+    public void armDown(double speed) {
+        if (Robot.oi.leftJoystick.getRawButton(2)) {
+            armMotor.set(-speed);
+            currentDir = -1;
+        } else {
+            if (getLimit() != bottomLimit && getLimit() != 1) {
+                armMotor.set(-speed);
                 currentDir = -1;
                 // System.out.println("Moving down");
             } else {

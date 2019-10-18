@@ -57,6 +57,8 @@ public class OI {
     public JoystickButton forcedownx;
     public JoystickButton safetyOnA;
     public JoystickButton safetyOffB;
+    public JoystickButton cancelAutomatedClimbback;
+    public JoystickButton automatedClimbstart;
     public Joystick leftJoystick;
     public JoystickButton feed;
     public JoystickButton eject;
@@ -117,13 +119,17 @@ public class OI {
         feed.whileHeld(new feedBall());
         leftJoystick = new Joystick(0);
         
+        automatedClimbstart = new JoystickButton(leftJoystick, 8);
+        automatedClimbstart.whenPressed(new ClimbGroup());
+        cancelAutomatedClimbback = new JoystickButton(leftJoystick, 7);
+        cancelAutomatedClimbback.whenPressed(new EmergencyStopClimb());
         safetyOffB = new JoystickButton(leftJoystick, 2);
         safetyOffB.whileHeld(new TurnSafetyOff());
         safetyOnA = new JoystickButton(leftJoystick, 1);
         safetyOnA.whenPressed(new TurnSafetyOn());
         forcedownx = new JoystickButton(leftJoystick, 3);
         forcedownx.whileHeld(new dumbDown());
-        interrupt = new JoystickButton(leftJoystick, 2);
+        interrupt = new JoystickButton(leftJoystick, 4);
         interrupt.whileHeld(new getOutOfAuto());
         toggledir2 = new JoystickButton(leftJoystick, 6);
         toggledir2.whenPressed(new ToggleDir());
@@ -133,8 +139,6 @@ public class OI {
 
         // SmartDashboard Buttons
         SmartDashboard.putData("ejectBall", new ejectBall());
-        SmartDashboard.putData("releaseHatch", new releaseHatch());
-        SmartDashboard.putData("dumbDown", new dumbDown());
         SmartDashboard.putData("TurnSafetyOn", new TurnSafetyOn());
         SmartDashboard.putData("TurnSafetyOff", new TurnSafetyOff());
 
@@ -159,6 +163,10 @@ public class OI {
         ArmDownPOV.whileHeld(new armDown());
         ArmDownPOV2.whileHeld(new armDown());
         ArmDownPOV3.whileHeld(new armDown());
+        
+        ArmDownPOV.whenReleased(new BounceOffBotttomArmLimit());
+        ArmDownPOV.whenReleased(new BounceOffBotttomArmLimit());
+        ArmDownPOV.whenReleased(new BounceOffBotttomArmLimit());
 
         DriveRightPOV.whileHeld(new driveRight());
         DriveLeftPOV.whileHeld(new driveLeft());

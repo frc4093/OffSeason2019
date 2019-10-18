@@ -123,6 +123,9 @@ public class Drive extends Subsystem {
             mecanumDrive1.driveCartesian(-.75 /* x */, 0/* y */, 0 /* z */, 0.0 /* gyro */);
         }
     }
+    public void driveStraight(double speed){
+        mecanumDrive1.driveCartesian(-0 /* x */, speed , 0 /* z */, 0.0 /* gyro */);
+    }
 
     public void moveLeft() {
         if (!driveCargo) {
