@@ -44,7 +44,7 @@ public class liftToBottomLimit extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        Robot.lift.moveDown(0);
+        Robot.lift.moveDown(-.2);
     }
 
     // Make this return true when this Command no longer needs to run execute()

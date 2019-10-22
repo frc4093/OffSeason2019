@@ -143,14 +143,14 @@ public class lift extends Subsystem {
             return true; // all done
         }
         if (lastLiftLimit == 3) {
-            moveDown(0); // lift down
+            moveDown(-.2); // lift down
         } else  { if (lastLiftLimit == 1) {
             moveUp(1); // lift up
             } else {
                 if (recordedDir == -1) {
-                    moveDown(0); // lift up
+                    moveDown(-.2); // lift up
                 } else {
-                    moveDown(0); // lift down
+                    moveDown(-.2); // lift down
                 }
             }   
         }

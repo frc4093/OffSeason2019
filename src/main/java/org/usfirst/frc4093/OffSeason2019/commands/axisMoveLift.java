@@ -50,7 +50,7 @@ public class axisMoveLift extends Command {
             Robot.lift.moveUp(speed);
         }
         else if(speed < -.1){
-            Robot.lift.moveDown(speed*.25);
+            Robot.lift.moveDown(speed*.4);
         } else {
             Robot.lift.hold();
         }
