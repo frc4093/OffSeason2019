@@ -57,8 +57,6 @@ public class OI {
     public JoystickButton forcedownx;
     public JoystickButton safetyOnA;
     public JoystickButton safetyOffB;
-    public JoystickButton cancelAutomatedClimbback;
-    public JoystickButton automatedClimbstart;
     public Joystick leftJoystick;
     public JoystickButton feed;
     public JoystickButton eject;
@@ -119,10 +117,6 @@ public class OI {
         feed.whileHeld(new feedBall());
         leftJoystick = new Joystick(0);
         
-        automatedClimbstart = new JoystickButton(leftJoystick, 8);
-        automatedClimbstart.whenPressed(new ClimbGroup());
-        cancelAutomatedClimbback = new JoystickButton(leftJoystick, 7);
-        cancelAutomatedClimbback.whenPressed(new EmergencyStopClimb());
         safetyOffB = new JoystickButton(leftJoystick, 2);
         safetyOffB.whileHeld(new TurnSafetyOff());
         safetyOnA = new JoystickButton(leftJoystick, 1);
