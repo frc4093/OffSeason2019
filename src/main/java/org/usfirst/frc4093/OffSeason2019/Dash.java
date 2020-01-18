@@ -32,6 +32,17 @@ public class Dash  {
 	public void displayData(String key,Boolean value) {
 		SmartDashboard.putBoolean(key, value);
 	}
+	//A way to read from dashboard -jn
+	public double readNumber(String key){
+		return SmartDashboard.getNumber(key,0);
+	}
+	public Boolean readBoolean(String key){
+		return SmartDashboard.getBoolean(key,false);
+	}
+	public String readString(String key){
+		return SmartDashboard.getString(key,"Default");
+	}
+
 	public void updateDashBoard(){
 		//check if change is actually needed to preserve cpu
 		if (throttle != l_Throttle) {
